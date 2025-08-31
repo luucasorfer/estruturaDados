@@ -1,0 +1,144 @@
+<section id="logico" class="w-[74em] bg-white rounded-lg shadow-md p-6 mb-8">
+  <div class="flex items-center mb-4">
+    <h1 class="text-2xl font-bold mb-4">Tipo <code>bool</code> em C</h1>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Em C, o tipo lógico é representado por <code>bool</code> (disponível via
+    <code>&lt;stdbool.h&gt;</code>), que pode assumir apenas dois valores:
+    <code>true</code> ou <code>false</code>.
+  </p>
+
+  <h2 class="text-xl font-semibold mb-2 mt-6">Exemplo com <code>bool</code></h2>
+  <div class="code-block mb-4">
+    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdbool.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+  <span class="type">bool</span> ligado = <span class="constant">true</span>;
+  <span class="type">bool</span> conectado = <span class="constant">false</span>;
+
+  <span class="function">printf</span>(<span class="string">"Ligado: %s\n"</span>, ligado ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+  <span class="function">printf</span>(<span class="string">"Conectado: %s\n"</span>, conectado ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+
+  <span class="keyword">return</span> 0;
+}
+</pre>
+  </div>
+
+  <div class="overflow-x-auto mb-4">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Item
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Representação em C
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">
+            Palavra-chave
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-500">
+            <code>bool</code> (<code>true</code>/<code>false</code>)
+          </td>
+        </tr>
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">
+            Include necessário
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-500">
+            <code>#include &lt;stdbool.h&gt;</code>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">
+            Valor verdadeiro
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-500"><code>true</code></td>
+        </tr>
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">
+            Valor falso
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-500"><code>false</code></td>
+        </tr>
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-gray-900">
+            Formato para saída
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-500">
+            Use operador ternário para converter para string
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-xl font-semibold mb-2 mt-6">Operadores Lógicos Comuns</h2>
+  <div class="code-block mb-4">
+    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdbool.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+  <span class="type">bool</span> a = <span class="constant">true</span>;
+  <span class="type">bool</span> b = <span class="constant">false</span>;
+
+  <span class="comment">// Operador E</span>
+  <span class="type">bool</span> e = a && b;
+  <span class="comment">// Operador OU</span>
+  <span class="type">bool</span> ou = a || b;
+  <span class="comment">// Negação</span>
+  <span class="type">bool</span> nao_a = !a;
+
+  <span class="function">printf</span>(<span class="string">"a && b = %s\n"</span>, e ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+  <span class="function">printf</span>(<span class="string">"a || b = %s\n"</span>, ou ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+  <span class="function">printf</span>(<span class="string">"!a = %s\n"</span>, nao_a ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+
+  <span class="keyword">return</span> 0;
+}
+</pre>
+  </div>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm text-yellow-700">
+          Lembre-se: em C, <code>bool</code> é representado como inteiro
+          internamente (0 para falso, 1 para verdadeiro), e documentos como o
+          compilador podem tratar qualquer valor não zero como
+          <code>true</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-xl font-semibold mb-2 mt-6">
+    Exemplo com Expressão Relacional
+  </h2>
+  <div class="code-block mb-4">
+    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdbool.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+  <span class="type">int</span> x = 10, y = 20;
+  <span class="type">bool</span> resultado = x < y && y > 5;
+
+  <span class="function">printf</span>(<span class="string">"x &lt; y && y &gt; 5: %s\n"</span>, resultado ? <span class="string">"true"</span> : <span class="string">"false"</span>);
+
+  <span class="keyword">return</span> 0;
+}
+</pre>
+  </div>
+</section>

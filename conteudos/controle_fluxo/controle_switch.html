@@ -1,0 +1,94 @@
+<section
+  id="entrada_saida"
+  class="w-[74em] min-h-[40em] bg-white rounded-lg shadow-md p-6 mb-8"
+>
+  <div class="flex items-center mb-4">
+    <h2 class="text-2xl font-bold text-gray-800">
+      Estrutura de Controle: <code>switch, case</code>
+    </h2>
+  </div>
+  <p class="text-gray-700 mb-4">
+    A estrutura de controle <code>switch</code> em C é usada para selecionar um
+    entre vários blocos de código a serem executados, com base no valor de uma
+    expressão. Ela é especialmente útil quando se tem múltiplas condições
+    discretas para verificar, tornando o código mais legível e organizado em
+    comparação com múltiplos <code>if-else</code>. A sintaxe básica do
+    <code>switch</code> é a seguinte:
+  </p>
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Exemplo básico com switch</span>
+<span class="function">switch</span> (expressão) {
+    <span class="comment">// bloco de código a ser executado com base no valor da expressão</span>
+    <span class="function">case</span> valor1:
+        <span class="comment">// código a ser executado se expressão == valor1</span>
+        <span class="function">break</span>;
+    <span class="function">case</span> valor2:
+        <span class="comment">// código a ser executado se expressão == valor2</span>
+        <span class="function">break</span>;
+    <span class="function">default</span>:
+        <span class="comment">// código a ser executado se nenhum dos casos anteriores for atendido</span>
+}</pre>
+  </div>
+  <p class="text-gray-700 mb-4">
+    A expressão dentro dos parênteses é avaliada e comparada com os valores
+    especificados em cada <code>case</code>. Se houver uma correspondência, o
+    bloco de código associado a esse <code>case</code> será executado até que um
+    comando <code>break</code> seja encontrado, o que encerra a execução do
+    <code>switch</code>. O comando <code>break</code> é importante para evitar a
+    execução "em cascata" dos casos subsequentes.
+  </p>
+  <p class="text-gray-700 mb-4">
+    O <code>default</code> é opcional e será executado se nenhum dos casos
+    anteriores corresponder ao valor da expressão. Ele funciona como um "else"
+    em uma estrutura <code>if-else</code>.
+  </p>
+  <p class="text-gray-700 mb-4">
+    A figura a seguir ilustra um algoritmo que verifica se o a variável valor é
+    igual a 0, 1 ou 2.
+  </p>
+  <div class="flex justify-center bg-gray-50 p-4 rounded-lg shadow-inner">
+    <img
+      src="./conteudos/controle_fluxo/image/fluxograma_switch.svg"
+      alt="Fluxograma de um switch"
+    />
+  </div>
+  <p class="text-gray-700 my-4">
+    Abaixo, veja um exemplo prático completo, que solicita ao usuário um número
+    entre 1 e 3 e exibe uma mensagem correspondente ao número informado.
+  </p>
+  <!-- Código C com cores -->
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Exemplo completo com switch</span>
+<span class="directive">#include</span> <span class="header">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> numero;
+
+    <span class="function">printf</span>(<span class="string">"Digite um número entre 1 e 3: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &numero);
+
+    <span class="function">switch</span> (numero) {
+        <span class="function">case</span> 1:
+            <span class="function">printf</span>(<span class="string">"Você digitou um.\n"</span>);
+            <span class="function">break</span>;
+        <span class="function">case</span> 2:
+            <span class="function">printf</span>(<span class="string">"Você digitou dois.\n"</span>);
+            <span class="function">break</span>;
+        <span class="function">case</span> 3:
+            <span class="function">printf</span>(<span class="string">"Você digitou três.\n"</span>);
+            <span class="function">break</span>;
+        <span class="function">default</span>:
+            <span class="function">printf</span>(<span class="string">"Número inválido! Por favor, digite entre 1 e 3.\n"</span>);
+    }
+
+    <span class="keyword">return</span> 0;
+}</pre>
+  </div>
+  <p class="text-gray-700 mb-4">
+    Neste exemplo, o programa solicita ao usuário que digite um número entre 1 e
+    3. Com base no número informado, o <code>switch</code> executa o bloco de
+    código correspondente ao <code>case</code> adequado, exibindo uma mensagem.
+    Se o número não estiver entre 1 e 3, o bloco do <code>default</code> é
+    executado, informando que o número é inválido.
+  </p>
+</section>

@@ -1,0 +1,292 @@
+<section id="basico" class="w-[74em] bg-white rounded-lg shadow-md p-6 mb-8">
+  <div class="flex items-center mb-4">
+    <i class="fas fa-book text-blue-600 text-2xl mr-3"></i>
+    <h2 class="text-2xl font-bold text-gray-800">Conceitos Básicos</h2>
+  </div>
+
+  <!-- Conceitos básicos -->
+  <p class="text-gray-700 mb-4">
+    Quais são os tipos de dados que o computador pode armazenar?
+  </p>
+  <p class="text-gray-700 mb-4">
+    Se pararmos para pensar que tudo que o computador compreende é representado
+    através de Zeros e Uns. Então a resposta é Zero e Um. Certo? Certo! Mas como
+    então o computador pode exibir mensagens na tela, apresentar ambientes
+    gráficos cheios de janelas, compreender o significado da teclas do teclado
+    ou dos cliques do mouse.
+  </p>
+  <p class="text-gray-700 mb-4">
+    Bom tudo começa com a definição de uma série de códigos. Por exemplo. A
+    letra "a" do teclado é representada pela seguinte sequência de zeros e uns
+    "01000001". O número 22 é representado por "00010110". E assim todos os
+    dados que são armazenados pelo computador podem ser representados em zeros e
+    ums.
+  </p>
+  <p class="text-gray-700 mb-4">
+    Sendo assim, existem alguns tipos básicos de dados nos quais valores podem
+    ser armazenados no computador.
+  </p>
+
+  <!-- Variables -->
+  <div id="variaveis" class="mb-8">
+    <h1 class="text-2xl font-bold mb-4">Variáveis</h1>
+    <p class="text-gray-700 mb-4">
+      Variáveis são nomes simbólicos que representam locais na memória onde os
+      valores podem ser armazenados no computador. Em C, todas as variáveis
+      devem ser declaradas antes de serem usadas.
+    </p>
+
+    <div class="code-block mb-4">
+      <pre><span class="comment">// Declaração de variáveis</span>
+<span class="type">int</span> idade;
+<span class="type">float</span> altura;
+<span class="type">char</span> letra;
+
+<span class="comment">// Inicialização</span>
+<span class="type">int</span> contador = 0;
+<span class="type">double</span> pi = 3.14159;
+<span class="type">char</span> inicial = <span class="string">'A'</span>;</pre>
+    </div>
+
+    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <i class="fas fa-lightbulb text-blue-500"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-blue-700">
+            Em C, os nomes de variáveis são case-sensitive (idade é diferente de
+            Idade) e devem começar com uma letra ou sublinhado (_).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Types -->
+  <div id="tipos" class="mb-8">
+    <h1 class="text-2xl font-bold mb-4">Tipos de Dados</h1>
+    <p class="text-gray-700 mb-4">
+      C possui vários tipos de dados básicos que podem ser classificados em:
+    </p>
+
+    <div class="overflow-x-auto mb-4">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Tipo
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Descrição
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Tamanho (bytes)
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Exemplo
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Declaração em C
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Formato de escrita (printf)
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Formato de leitura (scanf)
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">char</td>
+            <td class="px-6 py-4 text-sm text-gray-500">Caractere único</td>
+            <td class="px-6 py-4 text-sm text-gray-500">1</td>
+            <td class="px-6 py-4 text-sm text-gray-500">'A', '1', '$'</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>char letra = 'A';</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%c</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%c</code>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">int</td>
+            <td class="px-6 py-4 text-sm text-gray-500">Número inteiro</td>
+            <td class="px-6 py-4 text-sm text-gray-500">2 ou 4</td>
+            <td class="px-6 py-4 text-sm text-gray-500">10, -5, 0</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>int idade = 30;</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%d</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%d</code>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">float</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              Número de ponto flutuante
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">4</td>
+            <td class="px-6 py-4 text-sm text-gray-500">3.14, -0.001</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>float pi = 3.14f;</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%f, %.2f</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%f</code>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">double</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              Ponto flutuante de dupla precisão
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">8</td>
+            <td class="px-6 py-4 text-sm text-gray-500">3.1415926535</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>double preciso = 3.1415926535;</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%lf</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>%lf</code>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">void</td>
+            <td class="px-6 py-4 text-sm text-gray-500">Sem valor/tipo</td>
+            <td class="px-6 py-4 text-sm text-gray-500">-</td>
+            <td class="px-6 py-4 text-sm text-gray-500">Usado em funções</td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <code>void mensagem() { ... }</code>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">-</td>
+            <td class="px-6 py-4 text-sm text-gray-500">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-yellow-700">
+            O sufixo f no float pi = 3.14f; é importante para diferenciar de um
+            double.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center mt-4">
+        <div class="flex-shrink-0">
+          <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-yellow-700">
+            O tamanho exato dos tipos pode variar dependendo da plataforma e do
+            compilador. Use <code>sizeof()</code> para verificar o tamanho em
+            seu sistema.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center mt-4">
+        <div class="flex-shrink-0">
+          <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-yellow-700">
+            Em C, não existe um tipo de dado específico para representar valores
+            booleanos (verdadeiro/falso).</br> Normalmente, inteiros são usados, onde
+            0 representa falso e qualquer valor diferente de 0 representa
+            verdadeiro.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operators -->
+  <div id="operadores">
+    <h3 class="text-xl font-semibold mb-3 text-gray-800">Operadores</h3>
+    <p class="text-gray-700 mb-4">
+      C possui diversos operadores para realizar operações em variáveis e
+      valores:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h4 class="font-medium text-gray-800 mb-2">Aritméticos</h4>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>+ (adição)</li>
+          <li>- (subtração)</li>
+          <li>* (multiplicação)</li>
+          <li>/ (divisão)</li>
+          <li>% (módulo)</li>
+          <li>++ (incremento)</li>
+          <li>-- (decremento)</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h4 class="font-medium text-gray-800 mb-2">Relacionais</h4>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>== (igual a)</li>
+          <li>!= (diferente de)</li>
+          <li>> (maior que)</li>
+          <li>< (menor que)</li>
+          <li>>= (maior ou igual)</li>
+          <li><= (menor ou igual)</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h4 class="font-medium text-gray-800 mb-2">Lógicos</h4>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>&& (E lógico)</li>
+          <li>|| (OU lógico)</li>
+          <li>! (NÃO lógico)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="comment">// Exemplo de uso de operadores</span>
+<span class="type">int</span> a = 10, b = 20, c;
+<span class="type">float</span> resultado;
+
+c = a + b;          <span class="comment">// Operador aritmético</span>
+<span class="keyword">if</span> (a > b) {      <span class="comment">// Operador relacional</span>
+    <span class="comment">// ...</span>
+}
+<span class="keyword">if</span> (a > 0 && b > 0) {  <span class="comment">// Operadores lógicos</span>
+    <span class="comment">// ...</span>
+}</pre>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,127 @@
+<section id="introducao" class="w-[74em] bg-white rounded-lg shadow-md p-6">
+  <div class="flex">
+    <i class="fas fa-play-circle text-blue-600 text-2xl mr-3"></i>
+    <h1 class="text-2xl font-bold text-gray-800 ml-2">
+      Introdução à Linguagem C
+    </h1>
+  </div>
+
+  <div class="p-4">
+    <p class="text-gray-700 mb-4">
+      Uma linguagem de programação é um método padronizado para comunicar
+      instruções para um computador. É um conjunto de regras sintáticas e
+      semânticas usadas para definir um programa de computador. Permite que um
+      programador especifique precisamente sobre quais dados um computador vai
+      atuar, como estes dados serão armazenados ou transmitidos e quais ações
+      devem ser tomadas sob várias circunstâncias.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Esta é uma introdução à linguagem C, é uma linguagem de programação de
+      propósito geral, estruturada e imperativa. Foi desenvolvida em 1972 por
+      Dennis Ritchie nos laboratórios da AT&T Bell, a linguagem C se tornou uma
+      das linguagens mais influentes na história da computação.
+    </p>
+  </div>
+
+  <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+    <div class="flex items-center">
+      <div class="flex-shrink-0">
+        <i class="fas fa-info-circle text-blue-500"></i>
+      </div>
+
+      <div class="ml-3">
+        <p class="text-sm text-blue-700">
+          C é considerada uma linguagem de "médio nível", combinando elementos
+          de linguagens de alto nível com a funcionalidade de linguagem de
+          montagem.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex">
+    <i class="fas fa-code text-blue-600 text-2xl mr-3"></i>
+    <h1 class="text-2xl font-bold ml-2">Sintaxe e semântica na programação</h1>
+  </div>
+
+  <div class="p-4">
+    <p class="text-gray-700 mb-4">
+      A sintaxe de uma linguagem de programação é o conjunto de regras que
+      define a estrutura correta dos programas escritos nessa linguagem. Inclui
+      a forma como os comandos, declarações, expressões e outros elementos devem
+      ser organizados para que o código seja compreendido pelo compilador ou
+      interpretador.
+    </p>
+    <p class="text-gray-700 mb-4">
+      A semântica, por outro lado, refere-se ao significado dos elementos da
+      linguagem. Enquanto a sintaxe se preocupa com a forma, a semântica se
+      preocupa com o conteúdo e o comportamento do código. Ela define como as
+      construções sintáticas se traduzem em ações ou resultados durante a
+      execução do programa.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Em resumo, a sintaxe é sobre como escrever o código corretamente, enquanto
+      a semântica é sobre o que o código realmente faz quando é executado. O
+      compilador auxilia a verificar se a sintaxe e a semântica de um programa
+      está correta. Durante os tópicos, serão apresentadas as estruturas básicas
+      da linguagem.
+    </p>
+  </div>
+
+  <div class="bg-blue-50 border-l-4 border-blue-500">
+    <h1 class="p-2 text-2xl font-bold ml-2">Primeiro Programa em C</h1>
+  </div>
+
+  <div class="p-4">
+    <p class="text-gray-700 mb-4">
+      Todo programa em C começa com a função <code>main()</code>. Vamos começar
+      com um programa simples que imprime "Hello, World!" na tela. Este é um
+      exemplo clássico usado para ilustrar a estrutura básica de um programa em
+      C.
+    </p>
+  </div>
+  <div class="code-block mb-4">
+    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+  <span class="type">int</span> <span class="function">main</span>() {
+    <span class="function">printf</span>(<span class="string">"Hello, World!\n"</span>);
+    <span class="keyword">return</span> 0;
+  }</pre>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-green-50 border-l-4 border-green-500 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <i class="fas fa-check-circle text-green-500"></i>
+        </div>
+        <div class="ml-3">
+          <h4 class="text-sm font-medium text-green-800">Vantagens</h4>
+          <ul class="mt-1 text-sm text-green-700 list-disc list-inside">
+            <li>Alto desempenho</li>
+            <li>Controle de baixo nível</li>
+            <li>Portabilidade</li>
+            <li>Grande base de código existente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+        </div>
+        <div class="ml-3">
+          <h4 class="text-sm font-medium text-yellow-800">Desafios</h4>
+          <ul class="mt-1 text-sm text-yellow-700 list-disc list-inside">
+            <li>Gerenciamento manual de memória</li>
+            <li>Ausência de orientação a objetos</li>
+            <li>Verificações em tempo de execução limitadas</li>
+            <li>Curva de aprendizado mais íngreme</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

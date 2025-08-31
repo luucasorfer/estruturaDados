@@ -1,0 +1,97 @@
+<section
+  id="funcoes"
+  class="w-[74em] min-h-[40em] bg-white rounded-lg shadow-md p-6 mb-8"
+>
+  <div class="flex items-center mb-4">
+    <h2 class="text-2xl font-bold text-gray-800">Funções</h2>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Funções em C são blocos de código que executam tarefas específicas. Elas
+    permitem reutilizar código em diferentes partes do programa, tornando o
+    desenvolvimento mais organizado, legível e fácil de manter.
+  </p>
+
+  <h3 id="definicao" class="text-lg font-semibold text-gray-800 mb-2">
+    Definição
+  </h3>
+  <p class="text-gray-700 mb-4">
+    Para definir uma função em C, usamos a seguinte estrutura:
+  </p>
+  <div class="code-block mb-4">
+    <pre><span class="type">tipo_retorno</span> <span class="function">nome_da_funcao</span>(<span class="type">tipo</span> parametro1, <span class="type">tipo</span> parametro2, ...) {
+    <span class="comment">// corpo da função</span>
+    <span class="keyword">return</span> valor;
+}</pre>
+  </div>
+  <p class="text-gray-700 mb-4">Aqui:</p>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>
+      <b>tipo_retorno</b>: indica o tipo de dado que a função vai devolver. Pode
+      ser, por exemplo, <code>int</code>, <code>float</code>, ou
+      <code>void</code> caso não retorne nada.
+    </li>
+    <li><b>nome_da_funcao</b>: o nome que identifica a função.</li>
+    <li>
+      <b>parametro1, parametro2, ...</b>: são os valores que a função recebe
+      para trabalhar.
+    </li>
+  </ul>
+  <p class="text-gray-700 mb-4">Exemplo prático:</p>
+  <div class="code-block mb-4">
+    <pre><span class="type">int</span> <span class="function">somar</span>(<span class="type">int</span> a, <span class="type">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}</pre>
+  </div>
+
+  <h3 id="chamada" class="text-lg font-semibold text-gray-800 mb-2">
+    Chamada da Função
+  </h3>
+  <p class="text-gray-700 mb-4">
+    Para usar uma função, basta chamá-la pelo nome, passando os argumentos
+    necessários entre parênteses:
+  </p>
+  <div class="code-block mb-4">
+    <pre><span class="type">int</span> resultado = <span class="function">somar</span>(3, 5);</pre>
+  </div>
+  <p class="text-gray-700 mb-4">
+    Aqui, chamamos a função <code>somar</code> com os valores <code>3</code> e
+    <code>5</code>, e guardamos o resultado na variável <code>resultado</code>.
+  </p>
+
+  <h3 id="parametros" class="text-lg font-semibold text-gray-800 mb-2">
+    Parâmetros
+  </h3>
+  <p class="text-gray-700 mb-4">
+    Parâmetros são variáveis que recebem os valores enviados para a função. Eles
+    podem ter qualquer tipo válido em C, como <code>int</code>,
+    <code>float</code>, ou até arrays.
+  </p>
+  <p class="text-gray-700 mb-4">Veja um exemplo de função com parâmetro:</p>
+  <div class="code-block mb-4">
+    <pre><span class="keyword">void</span> <span class="function">exibir_mensagem</span>(<span class="type">char</span> nome[]) {
+    <span class="function">printf</span>(<span class="string">"Olá, %s!\n"</span>, nome);
+}</pre>
+  </div>
+  <p class="text-gray-700 mb-4">E para chamar essa função:</p>
+  <div class="code-block mb-4">
+    <pre><span class="function">exibir_mensagem</span>(<span class="string">"Maria"</span>);</pre>
+  </div>
+
+  <h3 id="retorno" class="text-lg font-semibold text-gray-800 mb-2">Retorno</h3>
+  <p class="text-gray-700 mb-4">
+    Funções em C podem devolver um valor usando a palavra-chave
+    <code>return</code>. O tipo do valor retornado precisa ser compatível com o
+    tipo declarado na definição da função.
+  </p>
+  <p class="text-gray-700 mb-4">Exemplo de função que retorna um valor:</p>
+  <div class="code-block mb-4">
+    <pre><span class="type">float</span> <span class="function">calcular_area</span>(<span class="type">float</span> raio) {
+    <span class="keyword">return</span> 3.14 * raio * raio;
+}</pre>
+  </div>
+  <p class="text-gray-700 mb-4">Usando o valor retornado:</p>
+  <div class="code-block mb-4">
+    <pre><span class="type">float</span> area = <span class="function">calcular_area</span>(5.0);</pre>
+  </div>
+</section>

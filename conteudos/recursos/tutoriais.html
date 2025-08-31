@@ -1,0 +1,310 @@
+<section
+  id="tutoriais"
+  class="max-w-7xl mx-auto w-[74em] min-h-[40em] bg-white rounded-lg shadow-md p-8 mb-8"
+>
+  <h1 class="text-3xl font-bold mb-6 text-blue-700 flex items-center gap-3">
+    <i class="fas fa-laptop-code text-blue-500 text-2xl"></i>
+    Tutoriais para Configurar Ambiente C
+  </h1>
+
+  <p class="text-gray-700 mb-4 leading-relaxed">
+    Para programar em C, é essencial ter um ambiente de desenvolvimento
+    configurado corretamente. Abaixo estão tutoriais para instalar o Visual
+    Studio Code (VSCode) e configurar compiladores em diferentes sistemas
+    operacionais.
+  </p>
+
+  <p class="text-gray-700 mb-8 leading-relaxed">
+    Escolha o tutorial adequado para o seu sistema operacional e siga os passos
+    para começar a programar em C.
+  </p>
+
+  <!-- Card VSCode -->
+  <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-4">
+    <h2
+      class="text-2xl font-semibold mb-4 text-blue-600 flex items-center gap-2"
+    >
+      <i class="fas fa-download"></i> Como Instalar o Visual Studio Code
+    </h2>
+    <p class="mb-4 text-gray-700">
+      O Visual Studio Code (VSCode) é um editor de código leve e poderoso, ideal
+      para programar em C. Siga os passos abaixo:
+    </p>
+    <ul class="list-disc list-inside space-y-2 ml-4 text-gray-700">
+      <li>
+        Baixe no site oficial:
+        <a
+          href="https://code.visualstudio.com/"
+          target="_blank"
+          class="text-blue-600 hover:underline"
+          >https://code.visualstudio.com/</a
+        >
+      </li>
+      <li>Instale o VSCode normalmente.</li>
+      <li>
+        Instale a extensão <strong>"C/C++"</strong> da Microsoft para suporte ao
+        desenvolvimento em C.
+      </li>
+    </ul>
+
+    <div class="flex justify-center mt-6">
+      <img
+        src="./conteudos/recursos/image/site-vscode.png"
+        alt="Visual Studio Code"
+        class="rounded shadow-md max-w-3xl"
+      />
+    </div>
+
+    <div class="mt-6">
+      <p class="font-semibold text-gray-800">Dicas úteis:</p>
+      <ul class="list-disc list-inside space-y-2 ml-6 text-gray-700">
+        <li>
+          Instale a extensão "C/C++" da Microsoft para suporte ao
+          desenvolvimento em C.
+        </li>
+        <li>
+          Instale a extensão "C/C++ Compile Run" para facilitar execução de
+          programas.
+        </li>
+        <li>
+          Use o terminal integrado (atalho: <code>Ctrl + `</code>) para compilar
+          e executar seus programas.
+        </li>
+        <li>
+          Melhore a aparencia dos ícones instalando a extenção "Material Icon
+          Theme".
+        </li>
+        <li>Experimente temas como "Dracula Official" ou "Omni".</li>
+        <li>
+          Instale a fonte
+          <a
+            href="https://www.jetbrains.com/lp/mono/"
+            target="_blank"
+            class="text-blue-600 hover:underline"
+            >JetBrains Mono</a
+          >
+          para melhor legibilidade.
+          <p class="text-gray-700 my-4">
+            Faça o download e extraia o conteúdo do arquivo ZIP baixado.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Selecione todos os arquivos que terminam com .ttf, clique com o
+            botão direito do mouse e selecione Instalar.
+          </p>
+          <p class="text-gray-700">
+            Uma das características dessa fonte é que ela possui suporte às font
+            ligatures que é uma funcionalidade que permite combinarmos símbolos
+            para formar um novo.
+          </p>
+          <div class="flex justify-center">
+            <img
+              src="./conteudos/recursos/image/font_ligatures.png"
+              alt="JetBrains Mono"
+              class="rounded shadow-md max-w-3xl"
+            />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Card MinGW -->
+  <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-4">
+    <h2
+      class="text-2xl font-semibold mb-4 text-blue-600 flex items-center gap-2"
+    >
+      <i class="fas fa-cogs"></i> Instalando MinGW no Windows
+    </h2>
+
+    <p class="text-gray-700 mb-4">
+      O MinGW é uma coleção de compiladores C/C++ que permite executar programas
+      em C. Siga os passos para instalar no windows:
+    </p>
+
+    <ol class="list-decimal list-inside space-y-2 ml-6 text-gray-700">
+      <li>
+        O site oficial do MinGW:
+        <a
+          href="https://www.mingw-w64.org/source/"
+          target="_blank"
+          class="text-blue-600 hover:underline"
+          >mingw-w64.org</a
+        >
+      </li>
+      <li>
+        Porém, o instalador do MinGW está disponível do Windows esta no
+        SourceForge:
+        <a
+          href="https://sourceforge.net/projects/mingw/"
+          target="_blank"
+          class="text-blue-600 hover:underline"
+          >Clique aqui</a
+        >
+      </li>
+      <li>
+        Durante a instalação, selecione o compilador GCC e anote o caminho da
+        instalação.
+      </li>
+      <li>
+        Adicione o caminho ao <code>PATH</code> do sistema:
+        <ul class="list-disc list-inside ml-6 mt-2">
+          <li>Windows + R → <code>sysdm.cpl</code></li>
+          <li>Avançado → Variáveis de Ambiente</li>
+          <li>Adicione: <code>C:\MinGW\bin</code></li>
+          <li>Clique em "OK" para salvar as alterações.</li>
+          <li>Repita o processo para a seção "Variáveis de usuário".</li>
+        </ul>
+      </li>
+      <li>
+        Após instalar, abra o Prompt de Comando e verifique a instalação com:
+        <code class="bg-gray-200 px-2 py-1 rounded text-sm">gcc --version</code>
+      </li>
+    </ol>
+
+    <p class="text-center mt-8 text-gray-500 text-sm">
+      Etapas ilustradas abaixo:
+    </p>
+
+    <!-- Carousel for MinGW Installation Images -->
+    <div class="relative w-full max-w-6xl mx-auto mt-4">
+      <div
+        id="mingw-carousel"
+        class="relative overflow-hidden rounded shadow-md"
+      >
+        <img
+          src="./conteudos/recursos/image/mingw-1.png"
+          alt="Passo 1"
+          class="w-full h-auto transition-all duration-300 block"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-2.png"
+          alt="Passo 2"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-3.png"
+          alt="Passo 3"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-4.png"
+          alt="Passo 4"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-5.png"
+          alt="Passo 5"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-6.png"
+          alt="Passo 6"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+        <img
+          src="./conteudos/recursos/image/mingw-7.png"
+          alt="Passo 7"
+          class="w-full h-auto transition-all duration-300 hidden"
+        />
+      </div>
+
+      <!-- Botões -->
+      <button
+        id="mingw-prev"
+        class="absolute left-0 top-1/2 -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-l hover:bg-blue-700"
+      >
+        &#8592;
+      </button>
+      <button
+        id="mingw-next"
+        class="absolute right-0 top-1/2 -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-r hover:bg-blue-700"
+      >
+        &#8594;
+      </button>
+
+      <!-- Dots -->
+      <div class="flex justify-center mt-2 space-x-2">
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-blue-400 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+        <span
+          class="mingw-dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Linux -->
+  <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-4">
+    <h2
+      class="text-2xl font-semibold mb-4 text-blue-600 flex items-center gap-2"
+    >
+      <i class="fab fa-linux"></i> Compilador no Linux
+    </h2>
+    <p class="mb-4">
+      A maioria das distribuições Linux já vem com o compilador gcc instalado.
+    </p>
+    <p>
+      Verifique com <code class="bg-gray-200 px-1 rounded">gcc --version</code>
+    </p>
+    <ul class="list-disc list-inside space-y-2 ml-6 text-gray-700">
+      <li>
+        Se não estiver instalado:
+        <ul class="list-disc ml-6 space-y-1">
+          <li>
+            Ubuntu/Debian:
+            <code class="bg-gray-200 px-1 rounded"
+              >sudo apt update && sudo apt install build-essential</code
+            >
+          </li>
+          <li>
+            Fedora:
+            <code class="bg-gray-200 px-1 rounded"
+              >sudo dnf groupinstall "Development Tools"</code
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- macOS -->
+  <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-4">
+    <h2
+      class="text-2xl font-semibold mb-4 text-blue-600 flex items-center gap-2"
+    >
+      <i class="fab fa-apple"></i> Compilador no macOS
+    </h2>
+    <ol class="list-decimal list-inside space-y-2 ml-6 text-gray-700">
+      <li>
+        Execute no terminal:
+        <code class="bg-gray-200 px-1 rounded">xcode-select --install</code>
+      </li>
+      <li>Siga as instruções na tela.</li>
+      <li>
+        Verifique com
+        <code class="bg-gray-200 px-1 rounded">gcc --version</code>
+      </li>
+    </ol>
+  </div>
+
+  <p class="mt-12 text-center text-gray-500 text-sm">
+    Para mais dúvidas, consulte a documentação oficial do Visual Studio Code ou
+    do compilador do seu sistema.
+  </p>
+</section>

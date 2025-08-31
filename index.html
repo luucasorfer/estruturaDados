@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estruturas de Dados: Referência da Linguagem C</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Smooth transitions */
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+
+      /* Code block styling */
+      .code-block {
+        font-family: "Courier New", monospace;
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        border-radius: 6px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      /* Slide effect */
+      .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .dropdown-content.open {
+        max-height: 500px; /* Ajuste baseado no comprimento do conteúdo */
+      }
+
+      /* Layout flexível para área de explicação */
+      .content-area {
+        margin-left: 16rem; /* Espaçamento para a barra lateral */
+        padding: 0.5rem;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Code styling */
+      .code-block {
+        font-family: "Courier New", monospace;
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        border-radius: 4px;
+        padding: 12px;
+        overflow-x: auto;
+      }
+
+      .keyword {
+        color: #569cd6;
+      }
+
+      .type {
+        color: #4ec9b0;
+      }
+
+      .string {
+        color: #ce9178;
+      }
+
+      .comment {
+        color: #6a9955;
+        font-style: italic;
+      }
+
+      .function {
+        color: #dcdcaa;
+      }
+
+      /* Smooth transitions */
+      .transition-all {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-blue-700 text-white shadow-lg">
+      <div
+        class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center"
+      >
+        <div class="flex items-center mb-4 md:mb-0">
+          <i class="fas fa-code text-3xl mr-3"></i>
+          <h1 class="text-2xl font-bold">Referência da Linguagem C</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Pesquisar..."
+              class="px-4 py-2 rounded-full bg-blue-600 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-64"
+            />
+            <button
+              class="absolute right-3 top-2 text-blue-300 hover:text-white"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <div
+              id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg z-50 hidden"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+        <!-- Sidebar -->
+        <div
+          id="sidebar"
+          class="w-[34em] bg-white rounded-lg shadow-md p-4 mr-8 hidden md:block h-fit sticky top-8"
+        >
+          <div class="p-4 border-b border-gray-200">
+            <h1 class="text-2xl font-bold mb-4 text-blue-700">Sumário</h1>
+          </div>
+          <nav>
+            <!-- Introducão -->
+            <div class="mb-4 mt-4">
+              <a
+                href="#introducao"
+                class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                data-html="./conteudos/introducao.html"
+                data-explanation="Introdução à linguagem C e seus conceitos básicos."
+              >
+                <i class="fas fa-play mr-2 ml-2"></i>
+                <span class="flex items-center mr-12"> Introdução </span>
+              </a>
+            </div>
+
+            <!-- Tipo de dados -->
+            <div class="mb-4 relative">
+              <a
+                href="#basico"
+                class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                data-html="./conteudos/tipos/basico.html"
+                data-explanation="Introdução à linguagem C e seus conceitos básicos."
+              >
+                <i class="fas fa-laptop-code mr-2"></i>
+                <span class="flex items-center"> Tipo de dados </span>
+                <i
+                  class="fas fa-chevron-right absolute end-4 transition-all transform"
+                ></i>
+              </a>
+              <div id="tipo-dados" class="dropdown-content pl-6 mt-1">
+                <a
+                  href="#inteiro"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/inteiro.html"
+                  data-explanation="Explicação sobre tipos inteiros"
+                  >Inteiro</a
+                >
+                <a
+                  href="#real"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/real.html"
+                  data-explanation="Explicação sobre tipos reais"
+                  >Real</a
+                >
+                <a
+                  href="#caracter"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/caracter.html"
+                  data-explanation="Explicação sobre tipos de caracteres"
+                  >Caracter</a
+                >
+                <a
+                  href="#cadeia"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/cadeia.html"
+                  data-explanation="Explicação sobre tipos de cadeia"
+                  >Cadeia</a
+                >
+                <a
+                  href="#logico"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/logico.html"
+                  data-explanation="Explicação sobre tipos lógicos"
+                  >Lógico</a
+                >
+                <a
+                  href="#vazio"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/tipos/vazio.html"
+                  data-explanation="Explicação sobre tipo vazio"
+                  >Vazio</a
+                >
+              </div>
+            </div>
+
+            <!-- Entrada e saída -->
+            <div class="mb-4 relative">
+              <a
+                href="#entrada-saida"
+                class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                data-html="./conteudos/entrada_saida/entrada_saida.html"
+                data-explanation="Funções básicas de entrada e saída em C."
+              >
+                <i class="fa fa-exchange mr-2"></i>
+                <span class="flex items-center"> Entrada e Saída </span>
+                <i
+                  class="fas fa-chevron-right absolute end-4 transition-all transform"
+                ></i>
+              </a>
+              <div id="entrada-saida" class="dropdown-content pl-6 mt-1">
+                <a
+                  href="#printf"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/entrada_saida/printf.html"
+                  data-explanation="Explicação sobre a função printf"
+                  >printf</a
+                >
+                <a
+                  href="#scanf"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/entrada_saida/scanf.html"
+                  data-explanation="Explicação sobre a função scanf"
+                  >scanf</a
+                >
+              </div>
+            </div>
+
+            <!-- Controle de fluxo -->
+            <div class="mb-4 relative">
+              <a
+                href="#controle_fluxo"
+                class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                data-html="./conteudos/controle_fluxo/controle_fluxo.html"
+                data-explanation="Estruturas de controle de fluxo em C."
+              >
+                <i class="fas fa-code-branch mr-2"></i>
+                <span class="flex items-center"> Controle de Fluxo </span>
+                <i
+                  class="fas fa-chevron-right absolute end-4 transition-all transform"
+                ></i>
+              </a>
+              <div id="controle_fluxo" class="dropdown-content pl-6 mt-1">
+                <a
+                  href="#controle_if"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/controle_fluxo/controle_if.html"
+                  data-explanation="Explicação sobre a estrutura if"
+                  >if, else, if-else-if</a
+                >
+                <a
+                  href="#switch"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/controle_fluxo/controle_switch.html"
+                  data-explanation="Explicação sobre a estrutura switch"
+                  >switch</a
+                >
+                <a
+                  href="#for"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/controle_fluxo/repeticao_for.html"
+                  data-explanation="Explicação sobre a estrutura for"
+                  >for</a
+                >
+                <a
+                  href="#while"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/controle_fluxo/repeticao_while.html"
+                  data-explanation="Explicação sobre a estrutura while"
+                  >while</a
+                >
+                <a
+                  href="#do-while"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  data-html="./conteudos/controle_fluxo/repeticao_do-while.html"
+                  data-explanation="Explicação sobre a estrutura do-while"
+                  >do-while</a
+                >
+              </div>
+            </div>
+
+            <!-- Funções -->
+            <div class="mb-4 relative">
+              <a
+                href="#funcoes"
+                class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                data-html="./conteudos/funcoes.html"
+                data-explanation="Definição e uso de funções em C."
+              >
+                <i class="fas fa-cogs mr-2"></i>
+                <span class="flex items-center"> Funções </span>
+                <i
+                  class="fas fa-chevron-right absolute end-4 transition-all transform"
+                ></i>
+              </a>
+              <div id="funcoes" class="dropdown-content pl-6 mt-1">
+                <a
+                  href="#definicao"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  >Definição</a
+                >
+                <a
+                  href="#chamada"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  >Chamada</a
+                >
+                <a
+                  href="#parametros"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  >Parâmetros</a
+                >
+                <a
+                  href="#retorno"
+                  class="flex items-center block px-3 py-2 rounded hover:bg-blue-100 text-blue-600 font-medium transition-all"
+                  >Retorno</a
+                >
+              </div>
+            </div>
+
+            <!-- Recursos Úteis -->
+            <div class="mt-8 border-t pt-4">
+              <h3 class="font-bold mb-2">Recursos Úteis</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="#documentacao"
+                    class="text-sm text-blue-600 hover:underline flex items-center"
+                    data-html="./conteudos/recursos/documentacao.html"
+                    data-explanation="Links para documentação recomendada e recursos adicionais."
+                    ><i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                    Documentação Recomendada</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#tutoriais"
+                    class="text-sm text-blue-600 hover:underline flex items-center"
+                    data-html="./conteudos/recursos/tutoriais.html"
+                    data-explanation="Links para tutoriais e guias práticos."
+                    ><i class="fas fa-book-open mr-2 text-xs"></i> Tutoriais</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Área de conteúdo -->
+        <div id="content" class="flex flex-col flex-1">
+          <div id="explanation"></div>
+          <script src="carrossel.js"></script>
+          <!-- Footer -->
+          <footer class="mt-12 border-t pt-8 text-center text-gray-600 text-sm">
+            <p>
+              © 2023 Referência da Linguagem C. Todos os direitos reservados.
+            </p>
+            <p class="mt-2">Este site é apenas para fins educacionais.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+              <a href="#" class="text-blue-600 hover:text-blue-800"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a href="#" class="text-blue-600 hover:text-blue-800"
+                ><i class="fab fa-twitter"></i> Twitter</a
+              >
+              <a href="#" class="text-blue-600 hover:text-blue-800"
+                ><i class="fas fa-envelope"></i> Contato</a
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+    <script src="./pesquisa.js"></script>
+    <script>
+      // Dropdown functionality
+      document.querySelectorAll(".dropdown-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const dropdownContent = button.nextElementSibling;
+          const icon = button.querySelector("i:last-child");
+
+          dropdownContent.classList.toggle("open");
+          icon.classList.toggle("rotate-90");
+
+          // Fechar outros dropdowns
+          document.querySelectorAll(".dropdown-content").forEach((content) => {
+            if (
+              content !== dropdownContent &&
+              content.classList.contains("open")
+            ) {
+              content.classList.remove("open");
+              content.previousElementSibling
+                .querySelector("i:last-child")
+                .classList.remove("rotate-90");
+            }
+          });
+        });
+      });
+
+      // Carregar HTML externo na área de explicação
+      document.querySelectorAll("[data-html]").forEach((item) => {
+        item.addEventListener("click", async (event) => {
+          event.preventDefault();
+          const htmlFile = event.currentTarget.getAttribute("data-html");
+
+          try {
+            const response = await fetch(htmlFile);
+            const htmlContent = await response.text();
+            document.getElementById("explanation").innerHTML = htmlContent;
+
+            // ⚠️ Executar script se for o carrossel
+            if (htmlFile.includes("tutoriais")) {
+              if (typeof inicializarCarrossel === "function") {
+                inicializarCarrossel();
+              }
+            }
+
+            // Role para o topo da página
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } catch (error) {
+            document.getElementById("explanation").innerHTML =
+              "<p class='text-red-500'>Erro ao carregar o conteúdo.</p>";
+            console.error("Erro ao carregar HTML:", error);
+          }
+        });
+      });
+
+      // Carregar conteúdo inicial automaticamente
+      window.addEventListener("DOMContentLoaded", () => {
+        const getStartLink = document.querySelector(
+          '[data-html="./conteudos/introducao.html"]',
+        );
+        if (getStartLink) {
+          getStartLink.click();
+        }
+      });
+    </script>
+  </body>
+</html>

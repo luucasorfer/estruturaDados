@@ -1,0 +1,147 @@
+<section
+  id="entrada_saida"
+  class="w-[74em] min-h-[40em] bg-white rounded-lg shadow-md p-6 mb-8"
+>
+  <div class="flex items-center mb-4">
+    <h2 class="text-2xl font-bold text-gray-800">
+      Estrutura de Controle: <code>if, else, else if</code>
+    </h2>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    A estrutura de controle <code>if</code> em C é usada para executar um bloco
+    de código condicionalmente, ou seja, apenas se uma determinada condição for
+    verdadeira. Ela permite que o programa tome decisões e execute diferentes
+    caminhos com base em condições específicas. A sintaxe básica do
+    <code>if</code> é a seguinte:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Exemplo básico com if</span>
+<span class="function">if</span> (condição) {
+    <span class="comment">// bloco de código a ser executado se a condição for verdadeira</span>
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    A condição dentro dos parênteses é avaliada como verdadeira
+    (<code>true</code>) ou falsa (<code>false</code>). Se a condição for
+    verdadeira, o bloco de código dentro das chaves será executado. Caso
+    contrário, o bloco será ignorado.
+  </p>
+
+  <p class="text-gray-700 mb-4">
+    Além do <code>if</code>, é possível usar a estrutura <code>else</code> para
+    definir um bloco de código que será executado quando a condição do
+    <code>if</code> for falsa:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// if com else</span>
+<span class="function">if</span> (condição) {
+    <span class="comment">// bloco de código se a condição for verdadeira</span>
+} <span class="function">else</span> {
+    <span class="comment">// bloco de código se a condição for falsa</span>
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Também é possível encadear múltiplas condições usando
+    <code>else if</code>, permitindo diferentes caminhos lógicos com base em
+    várias condições:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// if, else if e else</span>
+<span class="function">if</span> (condição1) {
+    <span class="comment">// executa se condição1 for verdadeira</span>
+} <span class="function">else if</span> (condição2) {
+    <span class="comment">// executa se condição2 for verdadeira</span>
+} <span class="function">else</span> {
+    <span class="comment">// executa se nenhuma das condições anteriores for verdadeira</span>
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    A estrutura <code>if, else if, else</code> é uma ferramenta poderosa para
+    controlar o fluxo de execução em programas C, permitindo que diferentes
+    ações sejam tomadas com base em condições variadas.
+  </p>
+
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">Exemplo:</h3>
+
+  <p class="text-gray-700 mb-4">
+    Abaixo, veja um exemplo prático completo, que solicita a nota do usuário e
+    exibe uma avaliação baseada no valor informado.
+  </p>
+
+  <!-- Código C com cores -->
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Programa que avalia uma nota</span>
+<span class="directive">#include</span> <span class="header">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> nota;
+
+    <span class="function">printf</span>(<span class="string">"Digite sua nota: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &amp;nota);
+
+    <span class="function">if</span> (nota >= 90) {
+        <span class="function">printf</span>(<span class="string">"Excelente\n"</span>);
+    } <span class="function">else if</span> (nota >= 70) {
+        <span class="function">printf</span>(<span class="string">"Bom\n"</span>);
+    } <span class="function">else</span> {
+        <span class="function">printf</span>(<span class="string">"Precisa melhorar\n"</span>);
+    }
+
+    <span class="keyword">return</span> 0;
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Esse programa usa <code>scanf</code> para ler a nota digitada pelo usuário
+    e, em seguida, avalia se ela é maior ou igual a 90, entre 70 e 89, ou menor
+    que 70. O uso de <code>if</code>, <code>else if</code> e
+    <code>else</code>
+    garante que apenas um dos blocos será executado.
+  </p>
+
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">Operador Ternário</h3>
+
+  <p class="text-gray-700 mb-4">
+    O operador ternário em C é uma forma concisa de escrever uma estrutura
+    <code>if-else</code> simples. Ele é utilizado na forma:
+    <code>condição ? valor_se_verdadeiro : valor_se_falso</code>.
+  </p>
+
+  <p class="text-gray-700 mb-4">
+    Essa estrutura é ideal para atribuições ou saídas rápidas baseadas em uma
+    condição simples. Veja um exemplo abaixo:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Exemplo com operador ternário</span>
+<span class="directive">#include</span> <span class="header">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> idade;
+
+    <span class="function">printf</span>(<span class="string">"Digite sua idade: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &idade);
+
+    <span class="comment">// Uso do operador ternário para exibir a mensagem</span>
+    (idade &gt;= 18) 
+        ? <span class="function">printf</span>(<span class="string">"Você é maior de idade.\n"</span>) 
+        : <span class="function">printf</span>(<span class="string">"Você é menor de idade.\n"</span>);
+
+    <span class="keyword">return</span> 0;
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Neste exemplo, o programa utiliza o operador ternário para verificar se a
+    idade informada é maior ou igual a 18 e exibe a mensagem apropriada em uma
+    única linha de código. É uma alternativa elegante e compacta ao uso do
+    <code>if-else</code> tradicional.
+  </p>
+</section>

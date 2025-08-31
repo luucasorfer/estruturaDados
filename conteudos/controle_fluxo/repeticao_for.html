@@ -1,0 +1,65 @@
+<section
+  id="entrada_saida"
+  class="w-[74em] min-h-[40em] bg-white rounded-lg shadow-md p-6 mb-8"
+>
+  <div class="flex items-center mb-4">
+    <h2 class="text-2xl font-bold text-gray-800">
+      Estrutura de Repetição: <code>for</code>
+    </h2>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    A estrutura de repetição <code>for</code> é usada para executar um bloco de
+    código um número conhecido de vezes. É ideal quando se sabe de antemão
+    quantas vezes uma ação deve ser repetida, como ao percorrer um intervalo de
+    valores.
+  </p>
+
+  <p class="text-gray-700 mb-4">
+    Sua sintaxe é composta por três partes: a inicialização, a condição e o
+    incremento, conforme mostrado abaixo:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Sintaxe básica</span>
+<span class="function">for</span> (<span class="type">inicialização</span>; <span class="type">condição</span>; <span class="type">incremento</span>) {
+    <span class="comment">// bloco de código a ser repetido</span>
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    A <strong>inicialização</strong> define a variável de controle; a
+    <strong>condição</strong> é verificada antes de cada repetição; e o
+    <strong>incremento</strong> altera o valor da variável a cada ciclo. O laço
+    continua enquanto a condição for verdadeira.
+  </p>
+
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">Exemplo:</h3>
+
+  <p class="text-gray-700 mb-4">
+    Abaixo está um exemplo prático de uso do <code>for</code> para imprimir os
+    números de 1 a 5 na tela:
+  </p>
+
+  <div class="code-block mb-4">
+    <pre><span class="comment">// Exibe números de 1 a 5</span>
+<span class="directive">#include</span> <span class="header">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> i;
+
+    <span class="function">for</span> (i = 1; i &lt;= 5; i++) {
+        <span class="function">printf</span>(<span class="string">"Número: %d\n"</span>, i);
+    }
+
+    <span class="keyword">return</span> 0;
+}</pre>
+  </div>
+
+  <p class="text-gray-700 mb-4">
+    Neste exemplo, a variável <code>i</code> é inicializada com 1. O laço
+    continua enquanto <code>i &lt;= 5</code>. A cada iteração, <code>i</code> é
+    incrementada em 1 e o valor é exibido com <code>printf</code>. Quando
+    <code>i</code> atinge 6, a condição se torna falsa e o laço é encerrado.
+  </p>
+</section>

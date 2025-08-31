@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referência da Linguagem C</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Code styling */
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 4px;
+            padding: 12px;
+            overflow-x: auto;
+        }
+        
+        .keyword {
+            color: #569cd6;
+        }
+        
+        .type {
+            color: #4ec9b0;
+        }
+        
+        .string {
+            color: #ce9178;
+        }
+        
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        
+        .function {
+            color: #dcdcaa;
+        }
+        
+        /* Smooth transitions */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-700 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <i class="fas fa-code text-3xl mr-3"></i>
+                <h1 class="text-2xl font-bold">Referência da Linguagem C</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Pesquisar..." class="px-4 py-2 rounded-full bg-blue-600 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-64">
+                    <button class="absolute right-3 top-2 text-blue-300 hover:text-white">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full transition-all flex items-center">
+                    <i class="fas fa-user mr-2"></i>
+                    Login
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="flex flex-1 container mx-auto px-4 py-8">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white rounded-lg shadow-md p-4 mr-8 hidden md:block h-fit sticky top-8">
+            <h2 class="text-xl font-bold mb-4 text-blue-700 border-b pb-2">Sumário</h2>
+            <nav>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#introducao" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-play-circle mr-2"></i> Introdução
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#basico" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-book mr-2"></i> Básico
+                        </a>
+                        <ul class="ml-6 mt-1 space-y-1">
+                            <li><a href="#variaveis" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm transition-all">Variáveis</a></li>
+                            <li><a href="#tipos" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm transition-all">Tipos de Dados</a></li>
+                            <li><a href="#operadores" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm transition-all">Operadores</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#controle" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-code-branch mr-2"></i> Controle de Fluxo
+                        </a>
+                        <ul class="ml-6 mt-1 space-y-1">
+                            <li><a href="#condicionais" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm transition-all">Condicionais</a></li>
+                            <li><a href="#loops" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm transition-all">Loops</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#funcoes" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-cube mr-2"></i> Funções
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#arrays" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-list-ol mr-2"></i> Arrays
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ponteiros" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-memory mr-2"></i> Ponteiros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#estruturas" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-project-diagram mr-2"></i> Estruturas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#arquivos" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium transition-all">
+                            <i class="fas fa-file-alt mr-2"></i> Arquivos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mt-8 border-t pt-4">
+                <h3 class="font-bold mb-2">Recursos Úteis</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-sm text-blue-600 hover:underline flex items-center"><i class="fas fa-external-link-alt mr-2 text-xs"></i> Documentação Oficial</a></li>
+                    <li><a href="#" class="text-sm text-blue-600 hover:underline flex items-center"><i class="fas fa-book-open mr-2 text-xs"></i> Tutoriais</a></li>
+                    <li><a href="#" class="text-sm text-blue-600 hover:underline flex items-center"><i class="fas fa-laptop-code mr-2 text-xs"></i> IDE Online</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Mobile menu button -->
+        <button id="mobileMenuBtn" class="md:hidden fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg z-50">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+        
+        <!-- Mobile sidebar -->
+        <div id="mobileSidebar" class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 hidden md:hidden">
+            <div class="absolute top-0 left-0 w-3/4 h-full bg-white shadow-lg overflow-y-auto">
+                <div class="p-4 border-b flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-blue-700">Menu</h2>
+                    <button id="closeMobileMenu" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="p-4">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#introducao" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-play-circle mr-2"></i> Introdução
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#basico" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-book mr-2"></i> Básico
+                            </a>
+                            <ul class="ml-6 mt-1 space-y-1">
+                                <li><a href="#variaveis" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm">Variáveis</a></li>
+                                <li><a href="#tipos" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm">Tipos de Dados</a></li>
+                                <li><a href="#operadores" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm">Operadores</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#controle" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-code-branch mr-2"></i> Controle de Fluxo
+                            </a>
+                            <ul class="ml-6 mt-1 space-y-1">
+                                <li><a href="#condicionais" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm">Condicionais</a></li>
+                                <li><a href="#loops" class="block px-3 py-1 rounded hover:bg-blue-50 text-sm">Loops</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#funcoes" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-cube mr-2"></i> Funções
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#arrays" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-list-ol mr-2"></i> Arrays
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ponteiros" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-memory mr-2"></i> Ponteiros
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#estruturas" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-project-diagram mr-2"></i> Estruturas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#arquivos" class="block px-3 py-2 rounded hover:bg-blue-50 text-blue-600 font-medium">
+                                <i class="fas fa-file-alt mr-2"></i> Arquivos
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <main class="flex-1">
+            <!-- Introduction Section -->
+            <section id="introducao" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-play-circle text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Introdução à Linguagem C</h2>
+                </div>
+                <p class="text-gray-700 mb-4">A linguagem C é uma linguagem de programação de propósito geral, estruturada e imperativa. Desenvolvida em 1972 por Dennis Ritchie nos laboratórios da AT&T Bell, a linguagem C se tornou uma das linguagens mais influentes na história da computação.</p>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-info-circle text-blue-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-blue-700">C é considerada uma linguagem de "médio nível", combinando elementos de linguagens de alto nível com a funcionalidade de linguagem de montagem.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Primeiro Programa em C</h3>
+                <p class="text-gray-700 mb-4">Todo programa em C começa com a função <code>main()</code>. Aqui está um exemplo simples do tradicional "Hello World":</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="function">printf</span>(<span class="string">"Hello, World!\n"</span>);
+    <span class="keyword">return</span> 0;
+}</pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-green-800">Vantagens</h4>
+                                <ul class="mt-1 text-sm text-green-700 list-disc list-inside">
+                                    <li>Alto desempenho</li>
+                                    <li>Controle de baixo nível</li>
+                                    <li>Portabilidade</li>
+                                    <li>Grande base de código existente</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-yellow-800">Desafios</h4>
+                                <ul class="mt-1 text-sm text-yellow-700 list-disc list-inside">
+                                    <li>Gerenciamento manual de memória</li>
+                                    <li>Ausência de orientação a objetos</li>
+                                    <li>Verificações em tempo de execução limitadas</li>
+                                    <li>Curva de aprendizado mais íngreme</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Basics Section -->
+            <section id="basico" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-book text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Conceitos Básicos</h2>
+                </div>
+                
+                <!-- Variables -->
+                <div id="variaveis" class="mb-8">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Variáveis</h3>
+                    <p class="text-gray-700 mb-4">Variáveis são nomes simbólicos que representam locais na memória onde armazenamos dados. Em C, todas as variáveis devem ser declaradas antes de serem usadas.</p>
+                    
+                    <div class="code-block mb-4">
+                        <pre><span class="comment">// Declaração de variáveis</span>
+<span class="type">int</span> idade;
+<span class="type">float</span> altura;
+<span class="type">char</span> letra;
+
+<span class="comment">// Inicialização</span>
+<span class="type">int</span> contador = 0;
+<span class="type">double</span> pi = 3.14159;
+<span class="type">char</span> inicial = <span class="string">'A'</span>;</pre>
+                    </div>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-lightbulb text-blue-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-blue-700">Em C, os nomes de variáveis são case-sensitive (idade é diferente de Idade) e devem começar com uma letra ou sublinhado (_).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Types -->
+                <div id="tipos" class="mb-8">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Tipos de Dados</h3>
+                    <p class="text-gray-700 mb-4">C possui vários tipos de dados básicos que podem ser classificados em:</p>
+                    
+                    <div class="overflow-x-auto mb-4">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tamanho (bytes)</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Exemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">char</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Caractere único</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">'A', '1', '$'</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">int</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Número inteiro</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 ou 4</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10, -5, 0</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">float</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Número de ponto flutuante</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3.14, -0.001</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">double</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ponto flutuante de dupla precisão</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3.1415926535</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">void</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sem valor/tipo</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Usado em funções</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-yellow-700">O tamanho exato dos tipos pode variar dependendo da plataforma e do compilador. Use <code>sizeof()</code> para verificar o tamanho em seu sistema.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operators -->
+                <div id="operadores">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Operadores</h3>
+                    <p class="text-gray-700 mb-4">C possui diversos operadores para realizar operações em variáveis e valores:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">Aritméticos</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>+ (adição)</li>
+                                <li>- (subtração)</li>
+                                <li>* (multiplicação)</li>
+                                <li>/ (divisão)</li>
+                                <li>% (módulo)</li>
+                                <li>++ (incremento)</li>
+                                <li>-- (decremento)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">Relacionais</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>== (igual a)</li>
+                                <li>!= (diferente de)</li>
+                                <li>> (maior que)</li>
+                                <li>< (menor que)</li>
+                                <li>>= (maior ou igual)</li>
+                                <li><= (menor ou igual)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">Lógicos</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>&& (E lógico)</li>
+                                <li>|| (OU lógico)</li>
+                                <li>! (NÃO lógico)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><span class="comment">// Exemplo de uso de operadores</span>
+<span class="type">int</span> a = 10, b = 20, c;
+<span class="type">float</span> resultado;
+
+c = a + b;          <span class="comment">// Operador aritmético</span>
+<span class="keyword">if</span> (a > b) {      <span class="comment">// Operador relacional</span>
+    <span class="comment">// ...</span>
+}
+<span class="keyword">if</span> (a > 0 && b > 0) {  <span class="comment">// Operadores lógicos</span>
+    <span class="comment">// ...</span>
+}</pre>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Flow Control Section -->
+            <section id="controle" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-code-branch text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Controle de Fluxo</h2>
+                </div>
+                
+                <!-- Conditionals -->
+                <div id="condicionais" class="mb-8">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Condicionais</h3>
+                    <p class="text-gray-700 mb-4">As estruturas condicionais permitem que o programa tome decisões com base em condições.</p>
+                    
+                    <h4 class="font-medium text-gray-800 mb-2">if-else</h4>
+                    <div class="code-block mb-4">
+                        <pre><span class="keyword">if</span> (condicao) {
+    <span class="comment">// código executado se condição for verdadeira</span>
+} <span class="keyword">else</span> <span class="keyword">if</span> (outra_condicao) {
+    <span class="comment">// código executado se outra_condicao for verdadeira</span>
+} <span class="keyword">else</span> {
+    <span class="comment">// código executado se nenhuma das condições for verdadeira</span>
+}</pre>
+                    </div>
+                    
+                    <h4 class="font-medium text-gray-800 mb-2">switch-case</h4>
+                    <div class="code-block mb-4">
+                        <pre><span class="keyword">switch</span> (expressao) {
+    <span class="keyword">case</span> valor1:
+        <span class="comment">// código para valor1</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> valor2:
+        <span class="comment">// código para valor2</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        <span class="comment">// código se nenhum case corresponder</span>
+}</pre>
+                    </div>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-lightbulb text-blue-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-blue-700">O <code>break</code> no switch é crucial para evitar a execução em cascata dos casos subsequentes. Se omitido, a execução continuará para o próximo case.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loops -->
+                <div id="loops">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Loops</h3>
+                    <p class="text-gray-700 mb-4">Loops permitem a execução repetida de um bloco de código enquanto uma condição for verdadeira.</p>
+                    
+                    <h4 class="font-medium text-gray-800 mb-2">while</h4>
+                    <div class="code-block mb-4">
+                        <pre><span class="keyword">while</span> (condicao) {
+    <span class="comment">// código a ser repetido</span>
+}</pre>
+                    </div>
+                    
+                    <h4 class="font-medium text-gray-800 mb-2">do-while</h4>
+                    <div class="code-block mb-4">
+                        <pre><span class="keyword">do</span> {
+    <span class="comment">// código a ser repetido</span>
+} <span class="keyword">while</span> (condicao);</pre>
+                    </div>
+                    
+                    <h4 class="font-medium text-gray-800 mb-2">for</h4>
+                    <div class="code-block">
+                        <pre><span class="keyword">for</span> (inicializacao; condicao; incremento) {
+    <span class="comment">// código a ser repetido</span>
+}</pre>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                            <h4 class="font-medium text-green-800 mb-2">Loop Control</h4>
+                            <ul class="text-sm text-green-700 space-y-1">
+                                <li><code>break</code> - Sai imediatamente do loop</li>
+                                <li><code>continue</code> - Pula para a próxima iteração</li>
+                                <li><code>goto</code> - (Evitar quando possível) Pula para um rótulo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4">
+                            <h4 class="font-medium text-purple-800 mb-2">Exemplo Prático</h4>
+                            <div class="code-block text-xs">
+                                <pre><span class="comment">// Imprime números pares de 0 a 10</span>
+<span class="keyword">for</span> (<span class="type">int</span> i = 0; i <= 10; i++) {
+    <span class="keyword">if</span> (i % 2 != 0) {
+        <span class="keyword">continue</span>;  <span class="comment">// Pula números ímpares</span>
+    }
+    <span class="function">printf</span>(<span class="string">"%d "</span>, i);
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Functions Section -->
+            <section id="funcoes" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-cube text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Funções</h2>
+                </div>
+                
+                <p class="text-gray-700 mb-4">Funções são blocos de código que realizam uma tarefa específica e podem ser chamados de diferentes partes do programa. Elas promovem a reutilização de código e a modularização.</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="comment">// Declaração (protótipo)</span>
+<span class="type">int</span> <span class="function">somar</span>(<span class="type">int</span> a, <span class="type">int</span> b);
+
+<span class="comment">// Definição</span>
+<span class="type">int</span> <span class="function">somar</span>(<span class="type">int</span> a, <span class="type">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Chamada</span>
+<span class="type">int</span> resultado = <span class="function">somar</span>(5, 3);</pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Parâmetros e Retorno</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Funções podem receber zero ou mais parâmetros</li>
+                            <li>Podem retornar um valor ou ser do tipo <code>void</code></li>
+                            <li>Parâmetros podem ser passados por valor ou por referência (usando ponteiros)</li>
+                            <li>O tipo de retorno deve corresponder ao declarado</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Recursão</h3>
+                        <p class="text-gray-700 mb-2">Funções podem chamar a si mesmas (recursão):</p>
+                        <div class="code-block">
+                            <pre><span class="type">int</span> <span class="function">fatorial</span>(<span class="type">int</span> n) {
+    <span class="keyword">if</span> (n <= 1) <span class="keyword">return</span> 1;
+    <span class="keyword">return</span> n * <span class="function">fatorial</span>(n - 1);
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-blue-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-blue-800">Boas Práticas com Funções</h4>
+                            <ul class="mt-1 text-sm text-blue-700 list-disc list-inside">
+                                <li>Dê nomes descritivos às funções</li>
+                                <li>Mantenha as funções pequenas e com um único propósito</li>
+                                <li>Documente os parâmetros e o valor de retorno</li>
+                                <li>Use protótipos para declarar funções antes de defini-las</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Arrays Section -->
+            <section id="arrays" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-list-ol text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Arrays</h2>
+                </div>
+                
+                <p class="text-gray-700 mb-4">Arrays são estruturas que armazenam uma coleção de elementos do mesmo tipo em posições contíguas de memória.</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="comment">// Declaração e inicialização</span>
+<span class="type">int</span> numeros[5] = {10, 20, 30, 40, 50};
+
+<span class="comment">// Acesso aos elementos</span>
+<span class="type">int</span> primeiro = numeros[0];  <span class="comment">// Índices começam em 0</span>
+numeros[2] = 35;            <span class="comment">// Modificando o terceiro elemento</span>
+
+<span class="comment">// Array multidimensional (matriz)</span>
+<span class="type">int</span> matriz[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};</pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Características</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Tamanho fixo (definido na declaração)</li>
+                            <li>Índices começam em 0</li>
+                            <li>Elementos são armazenados em posições contíguas de memória</li>
+                            <li>O nome do array é um ponteiro para seu primeiro elemento</li>
+                            <li>Não há verificação de limites (cuidado com buffer overflow)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Strings</h3>
+                        <p class="text-gray-700 mb-2">Em C, strings são arrays de caracteres terminados com '\0':</p>
+                        <div class="code-block">
+                            <pre><span class="type">char</span> nome[20] = <span class="string">"João Silva"</span>;
+<span class="type">char</span> *mensagem = <span class="string">"Olá, mundo!"</span>;
+
+<span class="comment">// Funções de string (necessário #include &lt;string.h&gt;)</span>
+<span class="function">strlen</span>(nome);    <span class="comment">// Comprimento</span>
+<span class="function">strcpy</span>(dest, src); <span class="comment">// Cópia</span>
+<span class="function">strcat</span>(s1, s2);  <span class="comment">// Concatenação</span>
+<span class="function">strcmp</span>(s1, s2);  <span class="comment">// Comparação</span></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pointers Section -->
+            <section id="ponteiros" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-memory text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Ponteiros</h2>
+                </div>
+                
+                <p class="text-gray-700 mb-4">Ponteiros são variáveis que armazenam endereços de memória. Eles são fundamentais em C para manipulação eficiente de memória e estruturas de dados.</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="type">int</span> var = 10;
+<span class="type">int</span> *ptr = &var;   <span class="comment">// ptr armazena o endereço de var</span>
+
+<span class="function">printf</span>(<span class="string">"Valor: %d\n"</span>, *ptr);  <span class="comment">// Acessa o valor apontado</span>
+*ptr = 20;                   <span class="comment">// Modifica o valor apontado</span></pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Operações com Ponteiros</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li><code>&</code> - Operador de endereço</li>
+                            <li><code>*</code> - Operador de dereferência</li>
+                            <li>Aritmética de ponteiros (incremento, decremento)</li>
+                            <li>Comparação entre ponteiros</li>
+                            <li>Ponteiro para ponteiro (<code>**</code>)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Ponteiros e Arrays</h3>
+                        <div class="code-block">
+                            <pre><span class="type">int</span> arr[5] = {1, 2, 3, 4, 5};
+<span class="type">int</span> *ptr = arr;  <span class="comment">// Equivalente a &arr[0]</span>
+
+<span class="comment">// Acesso alternativo</span>
+<span class="function">printf</span>(<span class="string">"%d\n"</span>, *(ptr + 2));  <span class="comment">// arr[2]</span>
+
+<span class="comment">// Ponteiros para funções</span>
+<span class="type">int</span> (*func_ptr)(<span class="type">int</span>, <span class="type">int</span>) = &somar;</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-yellow-800">Cuidados com Ponteiros</h4>
+                            <ul class="mt-1 text-sm text-yellow-700 list-disc list-inside">
+                                <li>Nunca dereferencie um ponteiro não inicializado</li>
+                                <li>Evite ponteiros "soltos" (dangling pointers)</li>
+                                <li>Verifique alocações de memória dinâmica</li>
+                                <li>Tenha cuidado com vazamentos de memória</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Structures Section -->
+            <section id="estruturas" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-project-diagram text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Estruturas</h2>
+                </div>
+                
+                <p class="text-gray-700 mb-4">Estruturas (structs) permitem agrupar variáveis de diferentes tipos sob um único nome, criando tipos de dados complexos.</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="comment">// Definição da estrutura</span>
+<span class="keyword">struct</span> Pessoa {
+    <span class="type">char</span> nome[50];
+    <span class="type">int</span> idade;
+    <span class="type">float</span> altura;
+};
+
+<span class="comment">// Declaração e uso</span>
+<span class="keyword">struct</span> Pessoa p1;
+<span class="function">strcpy</span>(p1.nome, <span class="string">"Maria"</span>);
+p1.idade = 25;
+p1.altura = 1.68;
+
+<span class="comment">// Ponteiros para estruturas</span>
+<span class="keyword">struct</span> Pessoa *ptr = &p1;
+<span class="function">printf</span>(<span class="string">"Nome: %s\n"</span>, ptr->nome);</pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Typedef</h3>
+                        <p class="text-gray-700 mb-2">O <code>typedef</code> permite criar aliases para tipos existentes, incluindo estruturas:</p>
+                        <div class="code-block">
+                            <pre><span class="keyword">typedef</span> <span class="keyword">struct</span> {
+    <span class="type">int</span> dia, mes, ano;
+} Data;
+
+Data hoje = {15, 8, 2023};</pre>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Unions</h3>
+                        <p class="text-gray-700 mb-2">Unions permitem que diferentes tipos de dados ocupem o mesmo espaço de memória:</p>
+                        <div class="code-block">
+                            <pre><span class="keyword">union</span> Valor {
+    <span class="type">int</span> i;
+    <span class="type">float</span> f;
+    <span class="type">char</span> str[20];
+};
+
+<span class="keyword">union</span> Valor v;
+v.i = 10;   <span class="comment">// Agora armazena um int</span>
+v.f = 3.14; <span class="comment">// Agora armazena um float, substituindo o int</span></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Files Section -->
+            <section id="arquivos" class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-file-alt text-blue-600 text-2xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Arquivos</h2>
+                </div>
+                
+                <p class="text-gray-700 mb-4">C fornece funções para manipulação de arquivos através da biblioteca <code>stdio.h</code>. As operações básicas incluem abrir, ler, escrever e fechar arquivos.</p>
+                
+                <div class="code-block mb-4">
+                    <pre><span class="type">FILE</span> *arquivo;
+
+<span class="comment">// Abrir arquivo para escrita</span>
+arquivo = <span class="function">fopen</span>(<span class="string">"dados.txt"</span>, <span class="string">"w"</span>);
+<span class="keyword">if</span> (arquivo == <span class="keyword">NULL</span>) {
+    <span class="function">printf</span>(<span class="string">"Erro ao abrir arquivo!\n"</span>);
+    <span class="keyword">return</span> 1;
+}
+
+<span class="comment">// Escrever no arquivo</span>
+<span class="function">fprintf</span>(arquivo, <span class="string">"Olá, arquivo!\n"</span>);
+
+<span class="comment">// Fechar o arquivo</span>
+<span class="function">fclose</span>(arquivo);
+
+<span class="comment">// Ler do arquivo</span>
+arquivo = <span class="function">fopen</span>(<span class="string">"dados.txt"</span>, <span class="string">"r"</span>);
+<span class="type">char</span> linha[100];
+<span class="keyword">while</span> (<span class="function">fgets</span>(linha, <span class="function">sizeof</span>(linha), arquivo) != <span class="keyword">NULL</span>) {
+    <span class="function">printf</span>(<span class="string">"%s"</span>, linha);
+}
+<span class="function">fclose</span>(arquivo);</pre>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Modos de Abertura</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li><code>"r"</code> - Leitura (arquivo deve existir)</li>
+                            <li><code>"w"</code> - Escrita (cria ou sobrescreve)</li>
+                            <li><code>"a"</code> - Anexar (cria ou escreve no final)</li>
+                            <li><code>"r+"</code> - Leitura e escrita</li>
+                            <li><code>"w+"</code> - Leitura e escrita (cria ou sobrescreve)</li>
+                            <li><code>"a+"</code> - Leitura e anexação</li>
+                            <li><code>"b"</code> - Modo binário (ex: "rb", "wb")</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Funções Principais</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li><code>fopen()</code> / <code>fclose()</code> - Abrir/fechar arquivo</li>
+                            <li><code>fprintf()</code> / <code>fscanf()</code> - Escrita/leitura formatada</li>
+                            <li><code>fputs()</code> / <code>fgets()</code> - Escrita/leitura de strings</li>
+                            <li><code>fwrite()</code> / <code>fread()</code> - Escrita/leitura binária</li>
+                            <li><code>fseek()</code> / <code>ftell()</code> - Navegação no arquivo</li>
+                            <li><code>feof()</code> - Verifica fim do arquivo</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-blue-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-blue-800">Boas Práticas</h4>
+                            <ul class="mt-1 text-sm text-blue-700 list-disc list-inside">
+                                <li>Sempre verifique se o arquivo foi aberto com sucesso</li>
+                                <li>Feche os arquivos após o uso para liberar recursos</li>
+                                <li>Em operações críticas, verifique erros após cada operação</li>
+                                <li>Para arquivos binários, use <code>fread()</code> e <code>fwrite()</code></li>
+                                <li>Considere usar buffers para operações intensivas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <footer class="mt-12 border-t pt-8 text-center text-gray-600 text-sm">
+                <p>© 2023 Referência da Linguagem C. Todos os direitos reservados.</p>
+                <p class="mt-2">Este site é apenas para fins educacionais.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-envelope"></i> Contato</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileSidebar.classList.remove('hidden');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileSidebar.classList.add('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileSidebar.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Highlight current section in sidebar
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPosition = window.scrollY;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const id = section.getAttribute('id');
+                    
+                    // Remove active class from all links
+                    document.querySelectorAll('aside a').forEach(link => {
+                        link.classList.remove('bg-blue-100', 'font-bold');
+                    });
+                    
+                    // Add active class to current link
+                    const currentLink = document.querySelector(`aside a[href="#${id}"]`);
+                    if (currentLink) {
+                        currentLink.classList.add('bg-blue-100', 'font-bold');
+                    }
+                }
+            });
+        });
+        
+        // Trigger scroll event on page load to highlight the first section
+        window.addEventListener('load', () => {
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>
